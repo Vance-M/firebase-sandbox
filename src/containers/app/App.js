@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Search from '../../components/search/Search.jsx'
-import Display from '../../components/display/Display.jsx'
+import DisplayList from '../../components/display/DisplayList.jsx'
 import { getUser } from '../../services/dbUtils';
 import firebase from '../../firebase.js';
 
@@ -10,12 +10,32 @@ import firebase from '../../firebase.js';
 
 function App() {
   const [query, setQuery] = useState('');
-  const [user, setUser] = useState({});
+  const [users, setUsers] = useState([]);
 
   
   useEffect(() => {
-    console.log(user)
-  }, [user]);
+    const usersRef = firebase.database().ref('users')
+    usersRef.on('value', (snapshot) => {
+      let allUsers = snapshot.val();
+      let newState = [];
+
+      for (let user in allUsers) {
+        newState.push({
+          id: user,
+          username: allUsers[user].userName,
+          name: allUsers[user].userRealName,
+          link: allUsers[user].userLink,
+          repos: allUsers[user].userRepos,
+          gists: allUsers[user].userGists,
+          followers: allUsers[user].userFollowers,
+          following: allUsers[user].userFollowing,
+          creation: allUsers[user].userCreation,
+        });
+      }
+      setUsers(newState);
+    })
+
+  }, [query]);
   
 
 
@@ -38,7 +58,8 @@ function App() {
         query={query}
         onQueryChange={onQueryChangeHandler}
       />
-      <Display user={user} />
+      <DisplayList users={users} />
+    
     </>
   );
 }

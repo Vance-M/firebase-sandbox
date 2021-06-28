@@ -1,9 +1,10 @@
 import firebase from 'firebase';
+require('dotenv').config();
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCUwiC2IR7GB0-wgCHFXXmPnSxQF7-399U",
+    apiKey: `${process.env.API_Key}`,
     authDomain: "gituserstorage.firebaseapp.com",
-    databaseURL: "https://gituserstorage-default-rtdb.firebaseio.com",
+    databaseURL:  process.env.databaseURL,
     projectId: "gituserstorage",
     storageBucket: "gituserstorage.appspot.com",
     messagingSenderId: "927810336071",

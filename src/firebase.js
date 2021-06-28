@@ -3,6 +3,7 @@ import firebase from 'firebase';
 const firebaseConfig = {
     apiKey: "AIzaSyCUwiC2IR7GB0-wgCHFXXmPnSxQF7-399U",
     authDomain: "gituserstorage.firebaseapp.com",
+    databaseURL: "https://gituserstorage-default-rtdb.firebaseio.com",
     projectId: "gituserstorage",
     storageBucket: "gituserstorage.appspot.com",
     messagingSenderId: "927810336071",
@@ -12,3 +13,5 @@ const firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+  export default firebase;

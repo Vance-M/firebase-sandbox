@@ -11,7 +11,7 @@ export default function Display({ user }) {
 }
 
 
-// Display.propTypes = {
-//     user: PropTypes.string
-//   };
+Display.propTypes = {
+    user: PropTypes.object.isRequired,
+  };
   

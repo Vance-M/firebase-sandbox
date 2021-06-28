@@ -14,16 +14,17 @@ function App() {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(query);
     getUser(query)
       .then(setUser)
-    console.log(user);
   };
 
   const onQueryChangeHandler = ({ target }) => {
     setQuery(target.value);
   };
 
+  useEffect(() => {
+    console.log(user)
+  }, [user]);
 
   return (
     <>

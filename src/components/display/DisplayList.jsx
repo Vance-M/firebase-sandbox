@@ -5,7 +5,18 @@ import Display from './Display';
 export default function DisplayList({ users }) {
     return (
         <>
-            <ul aria-label="users-list">
+            <ul className='display-ul' aria-label="users-list">
+                <li >
+                    <figure className='user-title' >
+                        <p className='li-border'>Username</p>
+                        <p className='li-border'>Name</p>
+                        <p className='li-border'>Repos</p>
+                        <p className='li-border'>Gists</p>
+                        <p className='li-border'>Followers</p>
+                        <p className='li-border'>Following</p>
+                        <p className='li-border'>Created</p>
+                    </figure>
+                </li>
                 {users && users.map((
                     {   
                         username,
@@ -19,14 +30,14 @@ export default function DisplayList({ users }) {
                     }) => (
                         <li key={username}>
                         <Display
-                            username={username}
-                            name={name}
-                            link={link}
-                            repos={repos}
-                            gists={gists}
-                            followers={followers}
-                            following={following}
-                            creation={creation}
+                            username={username || 'N/A'}
+                            name= {name || 'N/A'}
+                            link={link || 'N/A'}
+                            repos={repos || 0}
+                            gists={gists || 0}
+                            followers={followers || 0}
+                            following={following || 0}
+                            creation={creation || 'N/A'}
                         />
                       </li>
                     ))}
@@ -39,14 +50,14 @@ export default function DisplayList({ users }) {
 DisplayList.propTypes = {
     users: PropTypes.arrayOf(
         PropTypes.shape({
-            username: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            link: PropTypes.string.isRequired,
-            repos: PropTypes.number.isRequired,
-            gists: PropTypes.number.isRequired,
-            followers: PropTypes.number.isRequired,
-            following: PropTypes.number.isRequired,
-            creation: PropTypes.string.isRequired
+            username: PropTypes.string,
+            name: PropTypes.string,
+            link: PropTypes.string,
+            repos: PropTypes.number,
+            gists: PropTypes.number,
+            followers: PropTypes.number,
+            following: PropTypes.number,
+            creation: PropTypes.string
         })
     ),
   };

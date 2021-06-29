@@ -11,7 +11,7 @@ import firebase from '../../firebase.js';
 function App() {
   const [query, setQuery] = useState('');
   const [users, setUsers] = useState([]);
-
+  const [message, setMessage] = useState('');
   
   useEffect(() => {
     const usersRef = firebase.database().ref('users')
@@ -20,7 +20,7 @@ function App() {
       let newState = [];
 
       for (let user in allUsers) {
-        newState.push({
+          newState.push({
           id: user,
           username: allUsers[user].userName,
           name: allUsers[user].userRealName,
@@ -30,20 +30,26 @@ function App() {
           followers: allUsers[user].userFollowers,
           following: allUsers[user].userFollowing,
           creation: allUsers[user].userCreation,
-        });
-      }
+        })}
       setUsers(newState);
-    })
+    });
 
   }, [query]);
-  
 
+  // setInterval(function(){ clearInterval(), setMessage(''); }, 10000);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     const usersRef = firebase.database().ref('users')
     const userData = await getUser(query)
-    usersRef.push(userData);
+    try {
+      usersRef.push(userData)
+      setMessage('Successfully stored to database!')
+      setTimeout(function(){ setMessage(''); }, 5000)}
+    catch(err){
+      setMessage('Failed to store. Check username')
+      setTimeout(function(){ setMessage(''); }, 5000);
+    }
 
   };
 
@@ -58,6 +64,7 @@ function App() {
         query={query}
         onQueryChange={onQueryChangeHandler}
       />
+      {message}
       <DisplayList users={users} />
     
     </>

@@ -79,16 +79,19 @@ function App() {
   };
 
   return (
-    <>
+    <div className='main'>
+      <h1 className='title'>Search Github Users</h1>
       <Search
         onSubmit={onSubmitHandler}
         query={query}
         onQueryChange={onQueryChangeHandler}
+        className='search-bar'
       />
-      {message}
-      <DisplayList users={users} />
+      <p className='message'>{message}</p>
+      <h1 className='display-title'>USERS</h1>
+      <DisplayList users={users} className='display'/>
     
-    </>
+    </div>
   );
 }
 

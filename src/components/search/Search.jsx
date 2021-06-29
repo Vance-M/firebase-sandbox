@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function Search({onSubmit, query, onQueryChange}) {
     return (
+      <>
         <form onSubmit={onSubmit}>
         <label htmlFor="gitUser-search">
           <input
@@ -17,6 +18,7 @@ export default function Search({onSubmit, query, onQueryChange}) {
         </label>
         {/* <input type="submit" value="Submit"/> */}
       </form>
+      </>
     )
 }
 

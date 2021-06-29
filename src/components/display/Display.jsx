@@ -13,16 +13,15 @@ export default function Display(
         creation 
     }) {
     return (
-        <figure>
-        <a href={link}>{username}</a>
-        <p>Name: {name}</p>
-        <p>Repos: {repos}</p>
-        <p>Gists: {gists}</p>
-        <p>Followers: {followers}</p>
-        <p>Following: {following}</p>
-        <p>Created: {creation}</p>
-
-      </figure>
+        <figure  className='user-row' >
+            <a className='li-border' href={link}>{username}</a>
+            <p className='li-border'>{name}</p>
+            <p className='li-border'>{repos}</p>
+            <p className='li-border'>{gists}</p>
+            <p className='li-border'>{followers}</p>
+            <p className='li-border'>{following}</p>
+            <p className='li-border'>{creation}</p>
+        </figure>
     )
 }
 

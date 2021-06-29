@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Display from './Display';
 
 export default function DisplayList({ users }) {
-    console.log(users)
     return (
         <>
             <ul aria-label="users-list">

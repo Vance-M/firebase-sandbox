@@ -13,6 +13,25 @@ function App() {
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
   
+
+  const checkUserExists = (userData) => {
+    const usersRef = firebase.database().ref('users')
+    let exists = false
+    usersRef.on('value', (snapshot) => {
+      snapshot.forEach((childSnapshot)=> {
+        let snapshotValue = childSnapshot.val();
+        if (snapshotValue.userName === userData.userName){
+          exists = true
+          return exists
+        } else {
+          exists = false
+          return exists
+        }
+      })
+    })
+    return exists
+  }
+
   useEffect(() => {
     const usersRef = firebase.database().ref('users')
     usersRef.on('value', (snapshot) => {
@@ -36,23 +55,25 @@ function App() {
 
   }, [query]);
 
-  // setInterval(function(){ clearInterval(), setMessage(''); }, 10000);
-
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     const usersRef = firebase.database().ref('users')
     const userData = await getUser(query)
-    try {
-      usersRef.push(userData)
-      setMessage('Successfully stored to database!')
-      setTimeout(function(){ setMessage(''); }, 5000)}
-    catch(err){
-      setMessage('Failed to store. Check username')
+    const exists = checkUserExists(userData)
+    if (exists === false) {
+      try {
+        usersRef.push(userData)
+        setMessage('Successfully stored to database!')
+        setTimeout(function(){ setMessage(''); }, 5000)}
+      catch(err){
+        setMessage('Failed to store. Check username')
+        setTimeout(function(){ setMessage(''); }, 5000);
+      }
+    } else {
+      setMessage('Username already exists')
       setTimeout(function(){ setMessage(''); }, 5000);
     }
-
   };
-
   const onQueryChangeHandler = ({ target }) => {
     setQuery(target.value);
   };

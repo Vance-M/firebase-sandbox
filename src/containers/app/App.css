@@ -1,0 +1,111 @@
+body {
+    background-color: lightgray;
+}
+.main {
+    background-color: lightgray;
+    display: grid;
+    width: auto;
+    grid-template-rows: 100px 50px 50px auto;
+    align-content: center;
+    justify-items: center;
+}
+
+.title {
+    background-color: lightgreen;
+    border: solid 2px rgb(125, 208, 125);
+    width: 95%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar {
+    display: flex;
+    position: fixed;
+    
+}
+
+form input {
+    width: 200px;
+    height: 25px;
+
+}
+
+
+
+form {
+    background-color: lightgreen;
+    border: solid 2px rgb(125, 208, 125);
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message {
+    height: 50px;
+    position: relative;
+    font-size: large;
+}
+
+.display-title {
+    background-color: wheat;
+    border: solid 2px rgb(198, 179, 144);
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}4
+
+.display {
+    display: grid;
+    grid-template-rows: 100px auto;
+    position: fixed;
+}
+
+.display-ul {
+    list-style-type: none;
+    width: 95%;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-title {
+    display: grid;
+    grid-area: span;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+    font-weight: bolder;
+    align-items: center;
+    text-align: center;
+    background-color: gray;
+    border: solid 2px  rgb(77, 77, 77);
+}
+
+.user-row {
+    display: grid;
+    grid-area: span;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+    word-wrap: break-word;
+    align-items: center;
+    text-align: center;
+    background-color: gray;
+    border: solid 2px rgb(77, 77, 77);
+}
+
+.li-border + .li-border {
+    display: flex;
+    height: 80%;
+    border-left: 2px solid  rgb(77, 77, 77);
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* 
+marker
+
+figure */
